@@ -15,25 +15,7 @@ sudo apt-get install python python3-pip python3-dev ufw git curl zsh fonts-font-
 sudo apt-get install nitrogen rxvt-unicode gnome-screenshot polybar i3-gaps zathura
 pip3 install pywal
 
-# TODO - install i3-radius
-#                picom
-#
-#                conky
-#                gcalcli
-#                drive v0.3.9.1 +
-
-# emacs
-sudo snap install emacs --classic
-git clone --depth 1 https://github.com/hlissner/doom-emacs ~/.emacs.d
-~/.emacs.d/bin/doom install
-
-# org protocol setup
-gconftool-2 -s /desktop/gnome/url-handlers/org-protocol/command '/snap/bin/emacsclient %s' --type String
-gconftool-2 -s /desktop/gnome/url-handlers/org-protocol/enabled --type Boolean true
-
-
-echo "Setting visual preferences..."
-
+echo "Installing Source Code Pro font..."
 # Source Code Pro font
 FONT_HOME=~/.local/share/fonts
 echo "installing fonts at $PWD to $FONT_HOME"
@@ -57,31 +39,5 @@ cp -r .config  ~/.config/zathura/
 cp -r .config  ~/.config/polybar/
 cp -r .config  ~/.config/.compton.conf
 xrdb ~/.Xresources
-crontab crontab.backup # install crontab
-# NOTE this will error until you install drive!
 
-# Set default directory for gnome-screenshot
-gsettings set org.gnome.gnome-screenshot auto-save-directory "file:///home/$USER/Downloads/"
 echo "Done."
-
-#
-# Hardening
-#
-
-# UFW
-sudo ufw default deny outgoing
-sudo ufw default deny incoming
-sudo ufw allow out 53
-sudo ufw allow out http
-sudo ufw allow out https
-sudo ufw allow syncthing
-sudo ufw allow out ssh # for authenticated git with keys
-sudo ufw allow out 8000 # for n10.as radio
-sudo ufw enable
-
-xset r rate 160 30
-
-echo "Done! Your TODOs:"
-echo "- Start emacs, let it download, then change theme!"
-echo "- Install oh-my-zsh manually."
-echo "- Install drive manually: https://github.com/odeke-em/drive"
