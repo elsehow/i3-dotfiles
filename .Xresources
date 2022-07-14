@@ -1,0 +1,9 @@
+*cursorBlink:           true
+URxvt.font:             xft:Source Code Pro:style=Reguar:size=12
+
+URxvt.scrollBar: false
+
+URxvt.internalBorder: 32
+
+urxvt*depth: 32
+urxvt*background: rgba:0000/0000/0200/c800
